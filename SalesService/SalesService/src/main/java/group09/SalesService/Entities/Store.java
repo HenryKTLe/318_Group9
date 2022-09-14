@@ -53,7 +53,7 @@ public class Store {
         String salesRecord = "SALES RECORD: " + name + '\'';
 
         for (int i = 0; i < sales.size(); i++) {
-            salesRecord += "Sale " + i + ": " + '\'';
+            salesRecord += sales.get(i).toString()+ '\'';
         }
 
         return salesRecord;
