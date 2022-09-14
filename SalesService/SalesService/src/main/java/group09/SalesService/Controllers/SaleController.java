@@ -39,7 +39,7 @@ public class SaleController {
     }
 
     @PutMapping(path = "{id}")
-    public Optional<Sale> updatePart(@RequestBody Sale newSale, @PathVariable("id") Long id)
+    public Optional<Sale> updateSale(@RequestBody Sale newSale, @PathVariable("id") Long id)
     {
         return salesService.updateSale(newSale, id);
     }
