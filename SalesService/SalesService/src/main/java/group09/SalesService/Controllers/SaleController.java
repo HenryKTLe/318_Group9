@@ -26,6 +26,12 @@ public class SaleController {
         return salesService.getSales();
     }
 
+    @GetMapping(path = "{id}")
+    List<Sale> getSale(@PathVariable("id") Long id)
+    {
+        return salesService.getSale(id);
+    }
+
     @PostMapping
     Sale createSale(@RequestBody Sale sale)
     {
