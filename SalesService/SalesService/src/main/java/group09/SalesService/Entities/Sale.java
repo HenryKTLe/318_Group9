@@ -41,12 +41,12 @@ public class Sale {
         this.quantity = quantity;
     }
 
-    public int getSupplierId() {
-        return quantity;
+    public String getDateAndTime() {
+        return dateAndTime;
     }
 
-    public void setSupplierId(int quantity) {
-        this.quantity = quantity;
+    public void setDateAndTime(String dateAndTime) {
+        this.dateAndTime = dateAndTime;
     }
 
     @Override
