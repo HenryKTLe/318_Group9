@@ -2,6 +2,7 @@ package group09.SalesService.Services;
 
 import ch.qos.logback.core.net.SyslogOutputStream;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import group09.SalesService.Entities.InStoreSale;
 import group09.SalesService.Entities.Store;
 import group09.SalesService.Repositories.StoreRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,8 +21,6 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-@JsonIgnoreProperties(ignoreUnknown = true)
-
 public class StoreService {
     private final StoreRepository storeRepository;
 
@@ -49,7 +48,6 @@ public class StoreService {
         return storeRepository.findById(id)
                 .map(store -> {
                     store.setAddress(newStore.getAddress());
-                    store.setName(newStore.getName());
                     store.setManager(newStore.getManager()); //new addition
                     store.setSales(newStore.getSales());
                     return storeRepository.save(store);
@@ -58,5 +56,15 @@ public class StoreService {
 
     public void deleteStore(Long id) {
         storeRepository.deleteById(id);
+    }
+
+    //Look up all sales by store
+    public List<InStoreSale> getSales(Long id) {
+        boolean exists = StoreRepository.existsById(id);
+        if(!exists){
+            throw new IllegalStateException("Store with ID " + id + " does not exist");
+        }
+        Store store = StoreRepository.findById(id).orElseThrow(RuntimeException::new);
+        return store.getSales();
     }
 }
