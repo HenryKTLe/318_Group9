@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @ResponseBody
-@RequestMapping(path = "/sale")
+@RequestMapping(path = "/store")
 public class StoreController {
     private final StoreService storeService;
 
