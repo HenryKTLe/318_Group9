@@ -37,7 +37,7 @@ public class SalesService {
         return saleRepository.findAll();
     }
 
-    public List<Sale> getPart(Long id) {
+    public List<Sale> getSale(Long id) {
         return saleRepository.findAllById(Collections.singleton(id));
     }
 
@@ -50,7 +50,7 @@ public class SalesService {
                 .map(sale -> {
                     sale.setProductName(newSale.getProductName());
                     sale.setQuantity(newSale.getQuantity());
-                    sale.setSupplierId(newSale.getSupplierId()); //new addition
+                    sale.setDateAndTime(newSale.getDateAndTime()); //new addition
                     return saleRepository.save(sale);
                 });
     }
