@@ -49,14 +49,18 @@ public class Store {
 
     public void addSale(InStoreSale iss) { sales.add(iss); }
 
-    public String printSales() {
-        String salesRecord = "SALES RECORD: " + name + '\'';
+    public String toString() {
+        String storeString = "Store{" +
+                "address=" + address + '\'' +
+                ", manager='" + manager + '\'' +
+                ", name='" + name + '\'' +
+                '}';
 
         for (int i = 0; i < sales.size(); i++) {
-            salesRecord += "Sale " + i + ": " + '\'';
+            storeString += sales.get(i).toString()+ '\'';
         }
 
-        return salesRecord;
+        return storeString;
     }
 
 }
