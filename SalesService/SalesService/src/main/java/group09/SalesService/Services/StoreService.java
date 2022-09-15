@@ -60,11 +60,11 @@ public class StoreService {
 
     //Look up all sales by store
     public List<InStoreSale> getSales(Long id) {
-        boolean exists = StoreRepository.existsById(id);
+        boolean exists = storeRepository.existsById(id);
         if(!exists){
             throw new IllegalStateException("Store with ID " + id + " does not exist");
         }
-        Store store = StoreRepository.findById(id).orElseThrow(RuntimeException::new);
+        Store store = storeRepository.findById(id).orElseThrow(RuntimeException::new);
         return store.getSales();
     }
 }
